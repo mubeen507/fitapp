@@ -11,7 +11,7 @@ environment {
         stage('checkout-pullingcode-github') {
             steps {
                 sh 'sudo rm -rf /var/lib/jenkins/workspace/fitapp_production_deployment/fitapp'
-                sh 'git clone https://github.com/mubeen507/fitapp.git '
+                sh 'git clone https://github.com/mubeen507/fitapp.git --force '
                 echo 'code pulled '
             }   
             }
