@@ -10,8 +10,8 @@ environment {
         
         stage('checkout-pullingcode-github') {
             steps {
-                sh 'sudo rm -rf /var/lib/jenkins/workspace/FitApp_production_deployment/FitApp'
-                sh 'git clone https://github.com/mubeen507/FitApp.git '
+                sh 'sudo rm -rf /var/lib/jenkins/workspace/fitapp_production_deployment/fitapp'
+                sh 'git clone https://github.com/mubeen507/fitapp.git '
                 echo 'code pulled '
             }   
             }
@@ -19,10 +19,10 @@ environment {
         stage('build image') {
             steps {
                 sh 'pwd'
-                sh 'cd FitApp'
+                sh 'cd fitapp'
                 sh 'pwd'
-                sh 'docker build -t mubeen507/FitApp -f /var/lib/jenkins/workspace/FitApp_production_deployment/FitApp .'
-                echo 'FitApp image is build '
+                sh 'docker build -t mubeen507/fitapp -f /var/lib/jenkins/workspace/fitapp_production_deployment/fitapp .'
+                echo 'fitapp image is build '
             }
             }
         
@@ -34,20 +34,20 @@ environment {
           
          stage('Docker Push') {  
             steps {
-                sh 'docker push mubeen507/FitApp'
+                sh 'docker push mubeen507/fitapp'
             }
           }
         
         stage('Removing old docker container') {
             steps {
                 
-                sh 'docker container rm  FitAppcont -f'
+                sh 'docker container rm  fitappcont -f'
                 }
               }
               
         stage('Running the docker container') {
             steps {
-                sh 'docker run -d  --name FitAppcont -p 80:80 mubeen507/FitApp'
+                sh 'docker run -d  --name fitappcont -p 80:80 mubeen507/fitapp'
                 }
               } 
               
