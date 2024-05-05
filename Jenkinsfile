@@ -21,7 +21,7 @@ environment {
                 sh 'pwd'
                 sh 'cd fitapp'
                 sh 'pwd'
-                sh 'docker build -t mubeen507/fitapp -f /var/lib/jenkins/workspace/fitapp_production_deployment/fitapp .'
+                sh 'docker build -t mubeen507/fitapp .'
                 echo 'fitapp image is build '
             }
             }
